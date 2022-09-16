@@ -1,3 +1,5 @@
-export { default as ChatPanel } from "./ChatPanel";
-export { default as ChatSidebar } from "./ChatSidebar";
-export { default as Chat } from "./Chat";
+export { default as MessageWrapper } from "./MessageWrapper";
+export { default as Messages } from "./Messages";
+export { default as List } from "./List";
+export { default as NoMatch } from "./NoMatch";
+export { default as MsgPanel } from "./MsgPanel";
