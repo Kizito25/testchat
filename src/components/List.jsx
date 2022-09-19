@@ -22,6 +22,7 @@ const List = ({ messages, showDate }) => {
         key={`${m.msg}-${idx}`}
         className={`${msgType} ${float} ${color} break-words space-y-2 mt-4 p-4 rounded-3xl max-w-[60vw] md:max-w-1/2 md:min-w-1/2 h-full`}
       >
+        <p className="font-black">{m.username}</p>
         <p className="">{m.msg}</p>
 
         {showDate && (

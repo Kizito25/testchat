@@ -14,11 +14,19 @@ const MsgPanel = ({ setSent, channel }) => {
     if (!inputVal) {
       return;
     }
-    console.log(inputVal);
+    // Get username
+    const getUsername = () => {
+      return JSON.parse(sessionStorage.getItem("username")).username;
+    };
+    const getUserID = () => {
+      return JSON.parse(sessionStorage.getItem("username")).userID;
+    };
+
     const data = {
       date: new Date(),
       msg: inputVal,
-      id: Math.floor(Math.random() * 1000),
+      id: getUserID(),
+      username: getUsername(),
       type: "sent",
     };
     channel.postMessage({ ...data });

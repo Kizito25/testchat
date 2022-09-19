@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
-const Login = ({ isLoggedIn, setIsLoggedIn, properties }, props) => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   let [username, setUsername] = useState("");
   let [errorMessage, setErrorMessage] = useState("");
   let usernameRef = useRef();
@@ -43,13 +42,6 @@ const Login = ({ isLoggedIn, setIsLoggedIn, properties }, props) => {
     }
     return setUser(username);
   };
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/chat");
-    }
-  }, [isLoggedIn]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-indigo-100 w-full flex justify-center">
