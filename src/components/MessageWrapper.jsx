@@ -5,7 +5,7 @@ const MessageWrapper = ({ chats }) => {
     return a.date - b.date;
   });
   return (
-    <div className="msg-wrapper flex flex-col">
+    <div className="msg-wrapper flex flex-col mb-10">
       <List messages={sortedChats} showDate={true} />
     </div>
   );

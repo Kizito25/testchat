@@ -1,5 +1,3 @@
-import React from "react";
-
 const List = ({ messages, showDate }) => {
   // console.log("Final:", messages);
   if (messages.length === 0) {
@@ -9,10 +7,13 @@ const List = ({ messages, showDate }) => {
       </div>
     );
   }
-
   return messages.map((m, idx) => {
+    console.log(m.date);
     const msgType = m.type === "sent" ? "msg-sent" : "msg-received";
-    const float = m.type === "sent" ? "self-end" : "self-start";
+    const float =
+      m.type === "sent"
+        ? "self-end rounded-3xl rounded-br-none"
+        : "self-start rounded-3xl rounded-bl-none";
     const color =
       m.type === "sent"
         ? "bg-slate-800 shadow-lg text-white"
@@ -20,8 +21,13 @@ const List = ({ messages, showDate }) => {
     return (
       <div
         key={`${m.msg}-${idx}`}
-        className={`${msgType} ${float} ${color} break-words space-y-2 mt-4 p-4 rounded-3xl max-w-[60vw] md:max-w-1/2 md:min-w-1/2 h-full`}
+        className={`${msgType} ${float} ${color} break-words space-y-2 mt-4 p-4  max-w-[60vw] md:max-w-1/2 md:min-w-1/2 h-full`}
       >
+        <div className="flex gap-2">
+          <p className="font-light">{m.username}</p>
+          <i>{m.type === "sent" ? "(me)" : ""}</i>
+        </div>
+
         <p className="">{m.msg}</p>
 
         {showDate && (
