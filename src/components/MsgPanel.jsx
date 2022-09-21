@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MsgPanel = ({ setSent, channel }) => {
+const MsgPanel = ({ sent, setSent, channel }) => {
   const [inputVal, setInputVal] = useState("");
   const [btn, setBtn] = useState(false);
 
@@ -31,12 +31,13 @@ const MsgPanel = ({ setSent, channel }) => {
     };
     channel.postMessage({ ...data });
     setSent((prevState) => [...prevState, { ...data }]);
+    localStorage.setItem("sent", JSON.stringify(sent));
     setInputVal("");
     setBtn(false);
   };
 
   return (
-    <div className={"form"}>
+    <div className="absolute bottom-0 w-full">
       <form method="post" onSubmit={onClick} className="px-5">
         <div className="flex items-center justify-between w-full p-3 border-t border-gray-300">
           <input

@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
-const Login = ({ isLoggedIn, setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn }) => {
   let [username, setUsername] = useState("");
   let [errorMessage, setErrorMessage] = useState("");
   let usernameRef = useRef();
 
-  const cl = (val) => {
-    return console.log(val);
-  };
   let handleChange = (e) => {
     setUsername(e.target.value);
   };
@@ -43,22 +40,22 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     return setUser(username);
   };
 
+  useEffect(() => {
+    if (sessionStorage.getItem("username") !== null) setIsLoggedIn(true);
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-indigo-100 w-full flex justify-center">
-      <div className="bg-gradient-to-br from-yellow-50 via-emerald-50 to-yellow-100 w-full flex justify-center"></div>
-      <div className="bg-slate-50 w-full flex flex-col space-y-10 justify-center items-center">
-        <div className="border border-emerald-200 bg-slate-100 rounded-md p-10 grid grid-cols-1 space-y-10">
-          <div className="text-2xl font-black">
-            Login: {username && username}
-          </div>
-          <form onSubmit={handleSubmit}>
+      <div className="bg-slate-50 w-full flex flex-col space-y-10 p-5 justify-center items-center">
+        <div className="w-full lg:w-auto border border-emerald-200 bg-slate-100 rounded-md p-5 lg:p-10 space-y-5">
+          <div className="text-2xl font-black text-center">Login</div>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
-              className="px-6 py-4 border border-emerald-200 outline-none"
+              className="w-full px-4 py-2 lg:px-6 lg:py-4 border border-emerald-200 outline-none"
               onChange={handleChange}
               ref={usernameRef}
             />
-            <button className="border border-emerald-200 px-6 py-4">
+            <button className="w-full lg:w-auto border border-emerald-200 px-4 py-2 lg:px-6 lg:py-4 ">
               Login
             </button>
           </form>
