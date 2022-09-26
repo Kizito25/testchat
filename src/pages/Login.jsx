@@ -42,7 +42,7 @@ const Login = ({ setIsLoggedIn }) => {
 
   useEffect(() => {
     if (sessionStorage.getItem("username") !== null) setIsLoggedIn(true);
-  }, []);
+  }, [setIsLoggedIn]);
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-indigo-100 w-full flex justify-center">
       <div className="bg-slate-50 w-full flex flex-col space-y-10 p-5 justify-center items-center">
